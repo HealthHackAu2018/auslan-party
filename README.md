@@ -5,7 +5,7 @@
 ```
 python3 -m venv ENV
 source ENV/bin/activate
-pip install opencv-python
+pip install opencv-python xmltodict
 ```
 
 ### Install Yolo Mark

@@ -1,3 +1,4 @@
+from pathlib import Path
 import cv2
 import sys
 
@@ -15,9 +16,11 @@ if __name__ == '__main__':
     fh = open(f'data/train-{output_id}.txt', 'w')
     count = 0
 
+    Path(f'data/images/{output_id}').mkdir(exist_ok=True)
+
     while success:
         cv2.imwrite(f'data/images/{output_id}-frame-{count}.jpg', image)
-        fh.write(f'data/images/{output_id}-frame-{count}.jpg\n')
+        fh.write(f'data/images/{output_id}/{output_id}-frame-{count}.jpg\n')
         success, image = vidcap.read()
 
         count += 1
