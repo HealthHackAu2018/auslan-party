@@ -1,0 +1,23 @@
+<annotation>
+    <folder>6iP3g_qSf28</folder>
+    <filename>6iP3g_qSf28-frame-133.jpg</filename>
+    <size>
+        <width>1080</width>
+        <height>720</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>a</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>352</xmin>
+            <ymin>118</ymin>
+            <xmax>1033</xmax>
+            <ymax>689</ymax>
+        </bndbox>
+    </object>
+</annotation>

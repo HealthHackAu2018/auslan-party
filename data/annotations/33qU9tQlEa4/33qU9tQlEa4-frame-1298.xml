@@ -1,0 +1,23 @@
+<annotation>
+    <folder>33qU9tQlEa4</folder>
+    <filename>33qU9tQlEa4-frame-1298.jpg</filename>
+    <size>
+        <width>1280</width>
+        <height>720</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>s</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>423</xmin>
+            <ymin>140</ymin>
+            <xmax>1086</xmax>
+            <ymax>715</ymax>
+        </bndbox>
+    </object>
+</annotation>
