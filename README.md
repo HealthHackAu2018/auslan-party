@@ -6,6 +6,8 @@
 python3 -m venv ENV
 source ENV/bin/activate
 pip install opencv-python xmltodict
+pip install git+https://github.com/fastai/fastai.git
+pip install xmltodict
 ```
 
 ### Install Yolo Mark
