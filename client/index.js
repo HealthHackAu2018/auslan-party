@@ -25,21 +25,32 @@ btn.onclick = () => {
 }
 
 video.addEventListener('play', function() {
-    timerCallBack();
+    layVideoOnCanvasCallback();
+    startScreenshots();
 });
 
-function timerCallBack() {
+function layVideoOnCanvasCallback() {
     if (video.paused || video.ended) {
         return;
     }
     video.style.display = 'none';
-    layOnvideoCanvas();
+    layVideoOnCanvas();
     setTimeout(function() {
-        timerCallBack();
-    }, 1000 / 30);
+        layVideoOnCanvasCallback();
+    }, 1000 / 30); //30 fps
 }
 
-function layOnvideoCanvas() {
+function startScreenshots() {
+    if (video.paused || video.ended) {
+        return;
+    }
+    image.src = videoCanvas.toDataURL('image/webp');
+    setTimeout(function() {
+        startScreenshots();
+    }, 1000);
+}
+
+function layVideoOnCanvas() {
     const context = videoCanvas.getContext('2d');
     context.drawImage(video, 0, 0);
     drawStore.forEach(element => {
