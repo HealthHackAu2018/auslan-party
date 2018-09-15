@@ -1,0 +1,23 @@
+<annotation>
+    <folder>33qU9tQlEa4</folder>
+    <filename>33qU9tQlEa4-frame-781.jpg</filename>
+    <size>
+        <width>1280</width>
+        <height>720</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>j</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>524</xmin>
+            <ymin>80</ymin>
+            <xmax>1030</xmax>
+            <ymax>597</ymax>
+        </bndbox>
+    </object>
+</annotation>
