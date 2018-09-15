@@ -12,11 +12,17 @@ if __name__ == '__main__':
 
     vidcap = cv2.VideoCapture(video_fn)
     success, image = vidcap.read()
+    fh = open(f'data/train-{output_id}.txt', 'w')
     count = 0
 
     while success:
-        cv2.imwrite(f"data/images/{output_id}-frame-{count}.jpg", image)
+        cv2.imwrite(f'data/images/{output_id}-frame-{count}.jpg', image)
+        fh.write(f'data/images/{output_id}-frame-{count}.jpg\n')
         success, image = vidcap.read()
+
         count += 1
+
         if (count + 1) % 100 == 0:
             print(f"Finished {count + 1} images")
+
+    fh.close()
