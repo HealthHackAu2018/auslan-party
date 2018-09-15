@@ -1,0 +1,23 @@
+<annotation>
+    <folder>EBH3wdRtZyg</folder>
+    <filename>EBH3wdRtZyg-frame-4230.jpg</filename>
+    <size>
+        <width>480</width>
+        <height>360</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>b</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>94</xmin>
+            <ymin>122</ymin>
+            <xmax>378</xmax>
+            <ymax>315</ymax>
+        </bndbox>
+    </object>
+</annotation>
