@@ -10,12 +10,14 @@ let captionText = '';
 context.textAlign = 'center';
 context.fillStyle = 'white';
 
+const api = 'http://10.243.125.120:5006/api/predict';
+
 navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
     video.srcObject = stream;
 });
 
 videoCanvas.onclick = () => {
-    image.src = videoCanvas.toDataURL('image/webp');
+    image.src = videoCanvas.toDataURL('image/jpg');
 }
 
 btn.onclick = () => {
@@ -25,6 +27,13 @@ btn.onclick = () => {
         width: Math.random() * 100,
         height: Math.random() * 100
     });
+    fetch(api, { method: 'POST', body: videoCanvas.toDataURL('image/jpg') })
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log('error', err);
+        })
 }
 
 function addCaptionText() {
@@ -37,7 +46,7 @@ function addCaptionText() {
     captionText += 'A';
     setTimeout(function() {
         addCaptionText();
-    }, 1500);
+    }, 1000);
 
 }
 
