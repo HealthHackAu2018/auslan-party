@@ -10,4 +10,10 @@ header {
 
 .title {
     font-family: 'Raleway', sans-serif;
+    padding-left: 1rem;
+}
+
+.logo {
+    padding-right: 1rem;
+    padding-top: 0.4rem;
 }
