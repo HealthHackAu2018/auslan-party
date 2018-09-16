@@ -101,10 +101,19 @@
           return res.json();
         })
         .then(function(data) {
-          alert(JSON.stringify(data));
+          const bb = data.bb;
+
+          drawRect(bb[0], bb[1], bb[2], bb[3]);
         });
     }
   };
+
+  function drawRect(x, y, width, height) {
+    var c = document.getElementById("videocanvas");
+    var ctx = c.getContext("2d");
+    ctx.rect(x, y, width, height);
+    ctx.stroke();
+  }
 
   // Initialize our application.
   App.initialize();

@@ -18,19 +18,19 @@
     </header>
 
     <!-- Video element (live stream) -->
-    <label>Video Stream</label>
-    <video autoplay id="video" width="640" height="480"></video>
+    <div class="videoContainer">
+        <canvas id="videocanvas" width="640" height="480"></canvas>
+        <video autoplay id="video" width="640" height="480"></video>
+    </div>
+
 
     <!-- Canvas element (screenshot) -->
-    <label>Screenshot (base 64 dataURL)</label>
     <canvas id="canvas" width="640" height="480"></canvas>
 
     <!-- Capture button -->
     <button id="capture-btn">Capture!</button>
 
-    <!-- Image URL output -->
-    <label>Image URL</label>
-    <input type="text" id="image-url-input" disabled>
+    <input style="display:none;" type="text" id="image-url-input" disabled>
 
     <script src="./index.js"></script>
 </body>
