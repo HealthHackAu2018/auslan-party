@@ -2,10 +2,6 @@
     display: flex;
 }
 
-#video {
-    display: none;
-}
-
 .videoWrap {
     margin: 0 auto;
     position: relative;

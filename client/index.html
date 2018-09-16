@@ -5,27 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
     <link rel="stylesheet" type="text/css" href="app.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
 
     <title>Auslan Party</title>
 </head>
 
 <body>
-    <main class="content">
-        <header>
-            <h1 class="title">Auslan Party</h1>
-            <img class="logo" src="./images/healthHackLogo.png" width="200" height="60" alt="logo" />
-        </header>
+    <header>
+        <h1 class="title">Auslan Party</h1>
+        <img class="logo" src="./images/healthHackLogo.png" width="160" height="60" alt="logo" />
+    </header>
 
-        <div id="videoContainer">
-            <div class="videoWrap">
-                <video autoplay id="videoElem" width="640" height="480"></video>
-                <canvas id="video" width="640" height="480"></canvas>
-                <span id="caption">test</span>
-            </div>
-        </div>
-    </main>
+    <!-- Video element (live stream) -->
+    <label>Video Stream</label>
+    <video autoplay id="video" width="640" height="480"></video>
+
+    <!-- Canvas element (screenshot) -->
+    <label>Screenshot (base 64 dataURL)</label>
+    <canvas id="canvas" width="640" height="480"></canvas>
+
+    <!-- Capture button -->
+    <button id="capture-btn">Capture!</button>
+
+    <!-- Image URL output -->
+    <label>Image URL</label>
+    <input type="text" id="image-url-input" disabled>
 
     <script src="./index.js"></script>
 </body>
