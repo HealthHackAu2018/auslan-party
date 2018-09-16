@@ -1,13 +1,13 @@
 #videoContainer {
-    position: relative;
-}
-
-.canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
+    align-content: center;
 }
 
 header {
-    border-bottom: solid 1px grey;
+    border-bottom: solid 1px #eaeaea;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-family: 'Raleway', sans-serif;
 }
