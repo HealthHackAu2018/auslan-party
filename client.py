@@ -9,8 +9,7 @@ test_url = addr + '/api/predict'
 content_type = 'image/jpeg'
 headers = {'content-type': content_type}
 
-img = cv2.imread('./data/yolo/pAz_mIjHglw-frame-185.jpg')
-print(img.shape)
+img = cv2.imread('./data/yolo/pAz_mIjHglw-frame-160.jpg')
 
 # encode image as jpeg
 _, img_encoded = cv2.imencode('.jpg', img)
