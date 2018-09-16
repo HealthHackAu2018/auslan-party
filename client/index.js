@@ -42,6 +42,15 @@ function timerCallBack() {
 function layOnvideoCanvas() {
     const context = videoCanvas.getContext('2d');
     context.drawImage(video, 0, 0);
+    let frame = context.getImageData(0, 0, videoCanvas.width, videoCanvas.height);
+    for (let i = 0; i < frame.data.length; i++) {
+        let r = frame.data[i * 4 + 0];
+        let g = frame.data[i * 4 + 1];
+        let b = frame.data[i * 4 + 2];
+        if (r - 40 <= 80 && g - 30 <= 50 && b - 40 <= 100)
+            frame.data[i * 4 + 3] = 30;
+    }
+    context.putImageData(frame, 0 ,0);
     drawStore.forEach(element => {
         context.strokeRect(element.x, element.y, element.width, element.height);
     });
