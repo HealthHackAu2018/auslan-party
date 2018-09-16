@@ -11,6 +11,8 @@
     imageURLInput: "#image-url-input"
   };
 
+  const rects = [];
+
   // Our object that will hold all of the functions.
   var App = {
     // Get the video element.
@@ -51,6 +53,10 @@
           this.gotStream,
           this.noStream
         );
+
+        setInterval(() => {
+          this.capture();
+        }, 200);
 
         // Bind capture button to capture method.
         this.captureBtn.onclick = function() {
@@ -103,6 +109,10 @@
         .then(function(data) {
           const bb = data.bb;
 
+          var captionElem = document.querySelector(".caption");
+
+          captionElem.textContent = data.class;
+
           drawRect(bb[0], bb[1], bb[2], bb[3]);
         });
     }
@@ -111,8 +121,17 @@
   function drawRect(x, y, width, height) {
     var c = document.getElementById("videocanvas");
     var ctx = c.getContext("2d");
-    ctx.rect(x, y, width, height);
-    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.clearRect(0, 0, c.width, c.height);
+
+    // console.log(rects);
+
+    // rects.forEach(element => {});
+
+    ctx.strokeRect(x, y, width, height);
+
+    // rects.push({ x: x, y: y, width: width, height: height });
   }
 
   // Initialize our application.

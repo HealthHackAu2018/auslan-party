@@ -21,14 +21,17 @@
     <div class="videoContainer">
         <canvas id="videocanvas" width="640" height="480"></canvas>
         <video autoplay id="video" width="640" height="480"></video>
+        <span class="caption">
+            ?
+        </span>
     </div>
 
 
     <!-- Canvas element (screenshot) -->
-    <canvas id="canvas" width="640" height="480"></canvas>
+    <canvas style="display:none;" id="canvas" width="640" height="480"></canvas>
 
     <!-- Capture button -->
-    <button id="capture-btn">Capture!</button>
+    <!-- <button id="capture-btn">Capture!</button> -->
 
     <input style="display:none;" type="text" id="image-url-input" disabled>
 

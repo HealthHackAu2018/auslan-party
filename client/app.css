@@ -48,3 +48,13 @@ header {
   left: 0;
   z-index: 1000;
 }
+
+.caption {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
