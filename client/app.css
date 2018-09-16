@@ -28,6 +28,7 @@
 header {
     border-bottom: solid 1px #eaeaea;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
