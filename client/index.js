@@ -1,74 +1,77 @@
-const video = document.getElementById('videoElem');
-const videoCanvas = document.getElementById('video');
-const image = document.getElementById('screenshotImg');
-const btn = document.querySelector('button');
+(() => {
+  const video = document.getElementById("videoElem");
+  const videoCanvas = document.getElementById("video");
+  const captionElem = document.getElementById("caption");
 
-const context = videoCanvas.getContext('2d');
-const drawStore = [];
+  const context = videoCanvas.getContext("2d");
+  const drawStore = [];
 
-context.textAlign = 'center';
-context.fillStyle = 'white';
+  video.style.display = "none";
 
-const api = 'http://10.243.125.120:5006/api/predict';
+  const setCaptionText = text => {
+    captionElem.text = text;
+  };
 
-navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
-    video.srcObject = stream;
-});
+  context.textAlign = "center";
+  context.fillStyle = "white";
 
-videoCanvas.onclick = () => {
-    image.src = videoCanvas.toDataURL('image/jpg');
-}
+  const api = "http://10.243.125.120:5006/api/predict";
 
-btn.onclick = () => {
-    drawStore.push({
-        x: Math.random() * 640,
-        y: Math.random() * 480,
-        width: Math.random() * 100,
-        height: Math.random() * 100
+  navigator.mediaDevices
+    .getUserMedia({ video: true, audio: false })
+    .then(stream => {
+      video.srcObject = stream;
     });
-}
 
-video.addEventListener('play', function() {
+  video.addEventListener("play", function() {
     layVideoOnCanvasCallback();
-});
+  });
 
-function layVideoOnCanvasCallback() {
-    if (video.paused || video.ended) {
-        return;
-    }
-    video.style.display = 'none';
+  function layVideoOnCanvasCallback() {
+    // if (video.paused || video.ended) {
+    //   return;
+    // }
     layVideoOnCanvas();
     // add captions
-    context.fillText(captionText, 320, 450);
     setTimeout(function() {
-        layVideoOnCanvasCallback();
-    }, 1000 / 30); //30 fps
-}
+      layVideoOnCanvasCallback();
+    }, 1000 / 30); // 30 fps
+  }
 
-function takeScreenshots() {
-    if (video.paused || video.ended) {
-        return;
-    }
-    image.src = videoCanvas.toDataURL('image/webp');
-    setTimeout(function() {
-        takeScreenshots();
-    }, 500);
-}
-
-function layVideoOnCanvas() {
+  function layVideoOnCanvas() {
     context.drawImage(video, 0, 0);
-    drawStore.forEach(element => {
-        context.strokeRect(element.x, element.y, element.width, element.height);
-    });
-}
+    // drawStore.forEach(element => {
+    //   context.strokeRect(element.x, element.y, element.width, element.height);
+    // });
+  }
 
-function getPrediction(data) {
-    return fetch(api, { method: 'POST', body: videoCanvas.toDataURL('image/jpg') })
-        .then(res => {
-            console.log(res);
-            return res;
-        })
-        .catch(err => {
-            console.log('error', err);
-        })
-}
+  function takeScreenshot() {
+    return videoCanvas.toDataURL("image/jpeg");
+  }
+
+  function getPrediction(data) {
+    return fetch(api, {
+      method: "POST",
+      body: data
+    })
+      .then(res => {
+        console.log(res);
+        return res;
+      })
+      .catch(err => {
+        console.log("error", err);
+      });
+  }
+
+  const main = () => {
+    setInterval(() => {
+      const data = takeScreenshot();
+      console.log(data);
+      //   getPrediction(data).then(res => {
+      //     console.log(res);
+      //   });
+    }, 1000);
+  };
+
+  main();
+})();
