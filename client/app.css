@@ -1,5 +1,28 @@
 #videoContainer {
-    align-content: center;
+    display: flex;
+}
+
+#video {
+    display: none;
+}
+
+.videoWrap {
+    margin: 0 auto;
+    position: relative;
+}
+
+#caption {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
 
 header {
