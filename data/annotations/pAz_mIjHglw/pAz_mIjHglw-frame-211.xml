@@ -1,0 +1,23 @@
+<annotation>
+    <folder>pAz_mIjHglw</folder>
+    <filename>pAz_mIjHglw-frame-211.jpg</filename>
+    <size>
+        <width>1080</width>
+        <height>720</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>c</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>457</xmin>
+            <ymin>88</ymin>
+            <xmax>693</xmax>
+            <ymax>283</ymax>
+        </bndbox>
+    </object>
+</annotation>

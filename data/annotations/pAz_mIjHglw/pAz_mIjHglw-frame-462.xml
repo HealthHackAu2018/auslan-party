@@ -1,0 +1,23 @@
+<annotation>
+    <folder>pAz_mIjHglw</folder>
+    <filename>pAz_mIjHglw-frame-462.jpg</filename>
+    <size>
+        <width>1080</width>
+        <height>720</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>j</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>199</xmin>
+            <ymin>169</ymin>
+            <xmax>643</xmax>
+            <ymax>506</ymax>
+        </bndbox>
+    </object>
+</annotation>
