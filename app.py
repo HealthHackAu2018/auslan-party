@@ -7,6 +7,7 @@ from fastai.core import V, to_np
 import torch
 from flask_cors import CORS
 from scipy.special import expit
+import base64
 
 app = Flask(__name__)
 
@@ -30,7 +31,8 @@ def bb_hw(bb):
 
 @app.route("/api/predict", methods=['POST'])
 def make_predictions():
-    nparr = np.fromstring(request.data, np.uint8)
+    img_str = base64.b64decode(str(request.data).split(',')[1])
+    nparr = np.fromstring(img_str, np.uint8)
 
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR).astype(np.float32) / 255
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -58,4 +60,4 @@ def make_predictions():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5005)
+    app.run(debug=True, port=5006, host='0.0.0.0')
