@@ -1,65 +1,53 @@
-#videoContainer {
-  display: flex;
+* {
+  box-sizing: border-box;
 }
 
-.videoWrap {
-  margin: 0 auto;
-  position: relative;
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
 }
 
-#caption {
-  position: absolute;
-  width: 100%;
-  bottom: 20px;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  height: 20px;
-
+.video-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#video-container {
+  position: relative;
+}
+
+#video-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+#video-container .caption {
+  position: absolute;
+  bottom: 0px;
+  height: 40px;
+  left: 0;
+  width: 100%;
+  text-align: center;
   color: white;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
   font-size: 1.5rem;
 }
 
 header {
   border-bottom: solid 1px #eaeaea;
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
 }
 
-.title {
-  font-family: "Raleway", sans-serif;
-  padding-left: 1rem;
-}
-
-.logo {
-  padding-right: 1rem;
-  padding-top: 0.4rem;
-}
-
-.videoContainer {
-  position: relative;
-  display: flex;
-  justify-content: center
-}
-
-#videocanvas {
-  position: absolute;
-  top: 0;
-  /* left: 0; */
-  z-index: 1000;
-}
-
-.caption {
-  position: absolute;
-  bottom: 20px;
-  /* left: 0; */
-  width: 100%;
-  text-align: center;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 640;
-  font-size: 1.5rem;
+.logo-healthhack {
+  max-width: 160px;
 }
