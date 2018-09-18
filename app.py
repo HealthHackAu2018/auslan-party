@@ -31,7 +31,12 @@ def bb_hw(bb):
 
 @app.route("/api/predict", methods=['POST'])
 def make_predictions():
-    img_str = base64.b64decode(str(request.data).split(',')[1])
+    try:
+        content = request.get_json(force=True)
+    except HTTPException as e:
+        return jsonify({'error': 'Request data invalid'}), 400
+
+    img_str = base64.b64decode(str(content['image']))
     nparr = np.fromstring(img_str, np.uint8)
 
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR).astype(np.float32) / 255
@@ -60,4 +65,4 @@ def make_predictions():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5006, host='0.0.0.0')
+    app.run(debug=True, port=5007)

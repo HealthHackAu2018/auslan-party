@@ -1,19 +1,16 @@
+import time
+import io
 import requests
-import json
-import cv2
 
-addr = 'http://localhost:5005'
-test_url = addr + '/api/predict'
+from PIL import Image
+import base64
+from io import BytesIO
 
-# prepare headers for http request
-content_type = 'image/jpeg'
-headers = {'content-type': content_type}
+buffered = BytesIO()
+img = Image.open('./data/yolo/pAz_mIjHglw-frame-160.jpg')
+img.save(buffered, "JPEG")
+encoded_img = base64.b64encode(buffered.getvalue())
 
-img = cv2.imread('./data/yolo/pAz_mIjHglw-frame-160.jpg')
-
-# encode image as jpeg
-_, img_encoded = cv2.imencode('.jpg', img)
-
-# send http request with image and receive response
-response = requests.post(test_url, data=img_encoded.tostring(), headers=headers)
-print(response.json())
+tic = time.time()
+r = requests.post('http://localhost:5007/api/predict', json={'image': encoded_img.decode('utf8')})
+print(f'Result: {r.json()}, Total time: {time.time() - tic}')
