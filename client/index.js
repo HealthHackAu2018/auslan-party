@@ -1,4 +1,4 @@
-(() => {
+(env => {
   const API_BASE_URL = "http://localhost:5006";
 
   navigator.getUserMedia =
@@ -29,10 +29,13 @@
     ctx.clearRect(0, 0, canvas.width, c.height);
   }
 
-  function drawRect(canvas, x, y, width, height) {
+  function drawRect(canvas, x, y, width, height, color = "#FF0000") {
     const ctx = canvas.getContext("2d");
 
     ctx.beginPath();
+    ctx.globalAlpha = 1.0;
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = color;
     ctx.strokeRect(x, y, width, height);
   }
 
@@ -52,6 +55,11 @@
       captionText: "?"
     };
 
+    const setCaptionText = text => {
+      state.captionText = text;
+      captionElem.textContent = state.captionText;
+    };
+
     const startPredictionLoop = () => {
       state.predictionLoop = setInterval(() => {
         const imageDataUrl = captureVideoFrame(canvas);
@@ -59,9 +67,7 @@
           .then(data => {
             clearCanvas(canvas);
             drawRect(canvas, data.bb[0], data.bb[1], data.bb[2], data.bb[3]);
-
-            state.captionText = data.class;
-            captionElem.textContent = state.captionText;
+            setCaptionText(data.class);
           })
           .catch(() => {
             stopPredictionLoop();
@@ -81,7 +87,14 @@
         stream => {
           console.info("got stream", stream);
           videoElem.srcObject = stream;
-          startPredictionLoop();
+
+          // configure a fake presentation for demo purposes
+          if (env === "demo") {
+            drawRect(canvas, 200, 250, 230, 170);
+            setCaptionText("B");
+          } else {
+            startPredictionLoop();
+          }
         },
         err => console.error(err)
       );
@@ -94,4 +107,4 @@
 
   const app = App();
   app.initialise();
-})();
+})("demo");
