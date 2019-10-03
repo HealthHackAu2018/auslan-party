@@ -1,5 +1,9 @@
 # AusLan Party
 
+## Image dataset
+
+See [auslan-alphabet-images](https://github.com/HealthHackAu2018/auslan-alphabet-images) for dataset
+
 ## Setup
 
 ```
